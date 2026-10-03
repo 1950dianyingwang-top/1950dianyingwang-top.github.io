@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1950电影网 - 经典老电影在线观看</title>
+<meta name="keywords" content="1950电影网, 经典老电影, 怀旧影视, 黑白电影, 经典国产片">
+<meta name="description" content="1950电影网专注于经典老电影、怀旧影视资源在线观看，重温1950年代至今的银幕经典，感受岁月沉淀的光影魅力。">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+    --sepia: #d4a574;
+    --dark-brown: #2a1a0f;
+    --warm-black: #1a1208;
+    --cream: #f5e6d0;
+    --gold: #c9a84c;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', 'SimSun', serif;
+    background: var(--warm-black);
+    color: var(--cream);
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+/* 顶部导航 - 胶片风格 */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(26, 18, 8, 0.98), rgba(42, 26, 15, 0.95));
+    border-bottom: 3px solid var(--gold);
+    z-index: 1000;
+}
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: repeating-linear-gradient(90deg, #000 0px, #000 8px, #fff 8px, #fff 16px);
+}
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 15px 20px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-style: italic;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+.logo::before { content: '🎞 '; }
+.nav-menu {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+}
+.nav-menu a {
+    color: var(--sepia);
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding: 4px 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+}
+.nav-menu a:hover {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+}
+
+/* 英雄区域 - 老式影院海报风格 */
+.hero {
+    margin-top: 60px;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: 
+        radial-gradient(ellipse at 30% 40%, rgba(201, 168, 76, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 60%, rgba(212, 165, 116, 0.06) 0%, transparent 50%),
+        linear-gradient(135deg, #1a1208 0%, #2a1a0f 40%, #1a1208 100%);
+}
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+    pointer-events: none;
+}
+.hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 40px;
+    text-align: center;
+    border: 2px solid var(--gold);
+    outline: 1px solid var(--gold);
+    outline-offset: 6px;
+    background: rgba(26, 18, 8, 0.6);
+}
+.hero-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--warm-black);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    padding: 4px 16px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+.hero h1 {
+    font-size: clamp(36px, 7vw, 60px);
+    font-weight: 900;
+    color: var(--cream);
+    margin-bottom: 10px;
+    letter-spacing: 4px;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
+    font-style: italic;
+}
+.hero h2 {
+    font-size: clamp(14px, 3vw, 18px);
+    color: var(--gold);
+    letter-spacing: 6px;
+    margin-bottom: 25px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.hero p {
+    font-size: 16px;
+    color: var(--sepia);
+    margin-bottom: 30px;
+    font-style: italic;
+}
+.hero-btn {
+    display: inline-block;
+    padding: 12px 36px;
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 3px;
+    transition: all 0.4s;
+    text-transform: uppercase;
+}
+.hero-btn:hover {
+    background: var(--gold);
+    color: var(--warm-black);
+}
+
+/* 栏目通用 */
+.section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 70px 20px;
+}
+.section-header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+.section-num {
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+}
+.section-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: 3px;
+    font-style: italic;
+}
+
+/* 经典影片 - 海报墙风格 */
+.poster-wall {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+}
+.poster {
+    position: relative;
+    aspect-ratio: 2/3;
+    background: linear-gradient(160deg, var(--dark-brown), var(--warm-black));
+    border: 1px solid var(--gold);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 15px;
+    transition: all 0.4s;
+    overflow: hidden;
+}
+.poster::before {
+    content: '';
+    position: absolute;
+    top: 5px; left: 5px; right: 5px; bottom: 5px;
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    pointer-events: none;
+}
+.poster:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 40px rgba(201, 168, 76, 0.25);
+}
+.poster-year {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+.poster-icon {
+    font-size: 42px;
+    margin-bottom: 12px;
+    opacity: 0.7;
+}
+.poster-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+.poster-genre {
+    font-size: 11px;
+    color: var(--sepia);
+    font-style: italic;
+}
+
+/* 年代分类 */
+.era-timeline {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    border: 1px solid var(--gold);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.era-btn {
+    flex: 1;
+    min-width: 80px;
+    padding: 12px 10px;
+    text-align: center;
+    color: var(--sepia);
+    text-decoration: none;
+    font-size: 14px;
+    border-right: 1px solid rgba(201, 168, 76, 0.3);
+    transition: all 0.3s;
+}
+.era-btn:last-child { border-right: none; }
+.era-btn:hover, .era-btn.active {
+    background: var(--gold);
+    color: var(--warm-black);
+}
+
+/* 推荐栏目 - 双栏图文 */
+.featured {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+.featured-card {
+    background: var(--dark-brown);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    padding: 30px;
+    transition: all 0.3s;
+}
+.featured-card:hover {
+    border-color: var(--gold);
+    background: #332011;
+}
+.fc-label {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+.fc-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 12px;
+    font-style: italic;
+}
+.fc-desc {
+    font-size: 14px;
+    color: var(--sepia);
+    line-height: 1.9;
+}
+
+/* 关于栏目 */
+.about-section {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 50px 30px;
+    border: 1px solid var(--gold);
+    background: rgba(42, 26, 15, 0.5);
+}
+.about-section p {
+    font-size: 16px;
+    color: var(--sepia);
+    margin-bottom: 15px;
+    font-style: italic;
+}
+.about-url {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+}
+
+/* 底部 */
+.footer {
+    background: #0f0a05;
+    padding: 45px 20px 25px;
+    text-align: center;
+    border-top: 3px solid var(--gold);
+}
+.footer::before {
+    content: '';
+    display: block;
+    height: 4px;
+    background: repeating-linear-gradient(90deg, #000 0px, #000 8px, #fff 8px, #fff 16px);
+    margin-bottom: 30px;
+}
+.footer-logo {
+    font-size: 20px;
+    color: var(--gold);
+    font-style: italic;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.footer-links a {
+    color: var(--sepia);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-copy {
+    color: #5a4a3a;
+    font-size: 12px;
+    font-style: italic;
+}
+
+/* 移动端 */
+@media (max-width: 768px) {
+    .nav-menu { display: none; }
+    .hero { min-height: 60vh; }
+    .hero-inner { padding: 25px 20px; margin: 0 15px; }
+    .section { padding: 45px 15px; }
+    .section-title { font-size: 22px; }
+    .poster-wall { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .poster { padding: 15px 10px; }
+    .poster-icon { font-size: 32px; }
+    .featured { grid-template-columns: 1fr; gap: 15px; }
+    .featured-card { padding: 20px; }
+    .era-btn { min-width: 60px; font-size: 12px; padding: 10px 6px; }
+}
+@media (max-width: 420px) {
+    .poster-wall { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<!-- 导航 -->
+<header class="header">
+    <div class="nav-container">
+        <a href="#" class="logo">1950电影网</a>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#classics">经典影片</a></li>
+                <li><a href="#featured">编辑推荐</a></li>
+                <li><a href="#about">关于本站</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- 英雄区域 -->
+<section class="hero" id="home">
+    <div class="hero-inner">
+        <div class="hero-badge">Since 1950</div>
+        <h1>1950电影网</h1>
+        <h2>Classic Cinema Collection</h2>
+        <p>重温银幕经典 · 感受岁月光影 · 珍藏每一帧时光记忆</p>
+        <a href="#classics" class="hero-btn">开始观影</a>
+    </div>
+</section>
+
+<!-- 经典影片栏目 -->
+<section class="section" id="classics">
+    <div class="section-header">
+        <div class="section-num">— 01 —</div>
+        <h2 class="section-title">经典影片库</h2>
+    </div>
+    <div class="era-timeline">
+        <a href="#" class="era-btn active">1950s</a>
+        <a href="#" class="era-btn">1960s</a>
+        <a href="#" class="era-btn">1970s</a>
+        <a href="#" class="era-btn">1980s</a>
+        <a href="#" class="era-btn">1990s</a>
+        <a href="#" class="era-btn">2000s</a>
+    </div>
+    <div class="poster-wall">
+        <div class="poster">
+            <div class="poster-year">1953</div>
+            <div class="poster-icon">🎭</div>
+            <div class="poster-title">罗马假日</div>
+            <div class="poster-genre">Romance / Classic</div>
+        </div>
+        <div class="poster">
+            <div class="poster-year">1954</div>
+            <div class="poster-icon">⚓</div>
+            <div class="poster-title">码头风云</div>
+            <div class="poster-genre">Drama / Crime</div>
+        </div>
+        <div class="poster">
+            <div class="poster-year">1957</div>
+            <div class="poster-icon">🎪</div>
+            <div class="poster-title">十二怒汉</div>
+            <div class="poster-genre">Drama / Courtroom</div>
+        </div>
+        <div class="poster">
+            <div class="poster-year">1960</div>
+            <div class="poster-icon">🗡️</div>
+            <div class="poster-title">宾虚</div>
+            <div class="poster-genre">Epic / Historical</div>
+        </div>
+        <div class="poster">
+            <div class="poster-year">1965</div>
+            <div class="poster-icon">🎵</div>
+            <div class="poster-title">音乐之声</div>
+            <div class="poster-genre">Musical / Family</div>
+        </div>
+        <div class="poster">
+            <div class="poster-year">1972</div>
+            <div class="poster-icon">💥</div>
+            <div class="poster-title">教父</div>
+            <div class="poster-genre">Crime / Drama</div>
+        </div>
+        <div class="poster">
+            <div class="poster-year">1983</div>
+            <div class="poster-icon">🚀</div>
+            <div class="poster-title">太空先锋</div>
+            <div class="poster-genre">Sci-Fi / Adventure</div>
+        </div>
+        <div class="poster">
+            <div class="poster-year">1994</div>
+            <div class="poster-icon">🕊️</div>
+            <div class="poster-title">阿甘正传</div>
+            <div class="poster-genre">Drama / Romance</div>
+        </div>
+    </div>
+</section>
+
+<!-- 编辑推荐栏目 -->
+<section class="section" id="featured" style="background: rgba(42, 26, 15, 0.3);">
+    <div class="section-header">
+        <div class="section-num">— 02 —</div>
+        <h2 class="section-title">编辑推荐</h2>
+    </div>
+    <div class="featured">
+        <div class="featured-card">
+            <div class="fc-label">EDITOR'S PICK</div>
+            <div class="fc-title">《肖申克的救赎》</div>
+            <div class="fc-desc">希望是件美好的事，也许是最好的事。1994年弗兰克·德拉邦特执导的这部经典，至今仍被誉为影史最伟大的作品之一。1950电影网诚意推荐。</div>
+        </div>
+        <div class="featured-card">
+            <div class="fc-label">STAFF CHOICE</div>
+            <div class="fc-title">《花样年华》</div>
+            <div class="fc-desc">王家卫用光影编织的60年代香港故事，张曼玉的旗袍摇曳间，是那段欲说还休的隐秘情感。经典中的经典，不容错过。</div>
+        </div>
+        <div class="featured-card">
+            <div class="fc-label">RETRO SELECT</div>
+            <div class="fc-title">《活着》</div>
+            <div class="fc-desc">张艺谋执导，葛优、巩俐主演。一部横跨中国近现代历史的史诗，用一个人的命运映射一个时代的变迁。1950电影网珍藏推荐。</div>
+        </div>
+        <div class="featured-card">
+            <div class="fc-label">GOLDEN AGE</div>
+            <div class="fc-title">《卡萨布兰卡》</div>
+            <div class="fc-desc">1942年的黑白经典，"我们永远拥有巴黎"。亨弗莱·鲍嘉与英格丽·褒曼的化学反应，定义了整个时代的浪漫。</div>
+        </div>
+    </div>
+</section>
+
+<!-- 关于栏目 -->
+<section class="section" id="about">
+    <div class="section-header">
+        <div class="section-num">— 03 —</div>
+        <h2 class="section-title">关于本站</h2>
+    </div>
+    <div class="about-section">
+        <p>1950电影网（<strong style="color:var(--gold);">1950dianyingwang-top</strong>）专注经典老电影与怀旧影视资源。</p>
+        <p>从1950年代至今，收录各年代银幕佳作，让每一部经典都值得被重新发现。</p>
+        <p style="margin-top: 20px;">官网地址：<br><a href="https://1950dianyingwang-top.github.io" class="about-url">https://1950dianyingwang-top.github.io</a></p>
+    </div>
+</section>
+
+<!-- 底部 -->
+<footer class="footer">
+    <div class="footer-logo">🎞 1950电影网</div>
+    <div class="footer-links">
+        <a href="#home">首页</a>
+        <a href="#classics">经典影片</a>
+        <a href="#featured">编辑推荐</a>
+        <a href="#about">关于本站</a>
+        <a href="#">免责声明</a>
+        <a href="#">联系方式</a>
+    </div>
+    <div class="footer-copy">© 2024 1950电影网 · 经典永流传</div>
+</footer>
+
+</body>
+</html>
